@@ -91,13 +91,10 @@ import { useState } from "react";
 const generateInitialArray = (num, num2) => {
   const newBiXArray = [];
   for (let index = 0; index < num; index++) {
-    const newBiYArray = [];
-    for (let index = 0; index < num2; index++) {
-      newBiYArray.push({
+    newBiXArray.push({
         img: "x.png",
       });
     }
-    newBiXArray.push(newBiYArray)
   }
 
   return newBiXArray;
@@ -105,10 +102,8 @@ const generateInitialArray = (num, num2) => {
 
 
 const numRow = 5;
-const numCols = 5;
 
 const random = Math.floor(Math.random() * numRow);
-const random2 = Math.floor(Math.random() * numCols);
 
 export default function Game() {
   const [data, setData] = useState(generateInitialArray(numRow, numCols));

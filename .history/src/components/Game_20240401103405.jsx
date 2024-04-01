@@ -112,8 +112,8 @@ const random2 = Math.floor(Math.random() * numCols);
 
 export default function Game() {
   const [data, setData] = useState(generateInitialArray(numRow, numCols));
-
-  console.log(data);
+  
+console.log(data);
 
   const checkGame = (index, indexChild) => {
     const copyData = [...data];

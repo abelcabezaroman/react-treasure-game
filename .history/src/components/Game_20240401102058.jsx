@@ -103,17 +103,14 @@ const generateInitialArray = (num, num2) => {
   return newBiXArray;
 };
 
-
-const numRow = 5;
-const numCols = 5;
+const numRow = prompt()
+const numCols = prompt();
 
 const random = Math.floor(Math.random() * numRow);
 const random2 = Math.floor(Math.random() * numCols);
 
 export default function Game() {
   const [data, setData] = useState(generateInitialArray(numRow, numCols));
-
-  console.log(data);
 
   const checkGame = (index, indexChild) => {
     const copyData = [...data];

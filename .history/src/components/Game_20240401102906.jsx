@@ -90,17 +90,17 @@ import { useState } from "react";
 
 const generateInitialArray = (num, num2) => {
   const newBiXArray = [];
-  for (let index = 0; index < num; index++) {
-    const newBiYArray = [];
+  // for (let index = 0; index < num; index++) {
+  //   const newBiYArray = [];
     for (let index = 0; index < num2; index++) {
       newBiYArray.push({
         img: "x.png",
       });
     }
-    newBiXArray.push(newBiYArray)
-  }
+  //   newBiXArray.push(newBiYArray)
+  // }
 
-  return newBiXArray;
+  return newBiYArray;
 };
 
 
@@ -112,9 +112,7 @@ const random2 = Math.floor(Math.random() * numCols);
 
 export default function Game() {
   const [data, setData] = useState(generateInitialArray(numRow, numCols));
-
-  console.log(data);
-
+console.log(data);
   const checkGame = (index, indexChild) => {
     const copyData = [...data];
 
@@ -130,14 +128,12 @@ export default function Game() {
   return (
     <div>
       {data.map((item, index) =>
-        item.map((itemChild, indexChild) => (
           <img
-            onClick={() => checkGame(index, indexChild)}
-            key={index + "-" + indexChild}
-            src={itemChild.img}
+            onClick={() => checkGame(index, index)}
+            key={index + "-" + index}
+            src={item.img}
             alt="Imagen de juego"
           />
-        ))
       )}
     </div>
   );

@@ -88,57 +88,49 @@ import { useState } from "react";
 //   ],
 // ];
 
-const generateInitialArray = (num, num2) => {
-  const newBiXArray = [];
-  for (let index = 0; index < num; index++) {
-    const newBiYArray = [];
-    for (let index = 0; index < num2; index++) {
-      newBiYArray.push({
-        img: "x.png",
-      });
+const generateInitialArray = (num) => {
+    const newBiXArray = [];
+    for (let index = 0; index < num; index++) {
+        newBiXArray.push({
+            img: "x.png",
+        });
     }
-    newBiXArray.push(newBiYArray)
-  }
 
-  return newBiXArray;
+    return newBiXArray;
 };
 
 
 const numRow = 5;
-const numCols = 5;
 
 const random = Math.floor(Math.random() * numRow);
-const random2 = Math.floor(Math.random() * numCols);
 
-export default function Game() {
-  const [data, setData] = useState(generateInitialArray(numRow, numCols));
+export default function SimpleGame() {
+    const [data, setData] = useState(generateInitialArray(numRow));
 
-  console.log(data);
+    console.log(data);
 
-  const checkGame = (index, indexChild) => {
-    const copyData = [...data];
+    const checkGame = (index) => {
+        const copyData = [...data];
 
-    if (random === index && random2 === indexChild) {
-      copyData[index][indexChild].img = "chest.png";
-    } else {
-      copyData[index][indexChild].img = "skull.png";
-    }
+        if (random === index) {
+            copyData[index].img = "chest.png";
+        } else {
+            copyData[index].img = "skull.png";
+        }
 
-    setData(copyData);
-  };
+        setData(copyData);
+    };
 
-  return (
-    <div>
-      {data.map((item, index) =>
-        item.map((itemChild, indexChild) => (
-          <img
-            onClick={() => checkGame(index, indexChild)}
-            key={index + "-" + indexChild}
-            src={itemChild.img}
-            alt="Imagen de juego"
-          />
-        ))
-      )}
-    </div>
-  );
+    return (
+        <div>
+            {data.map((item, index) =>
+                    <img
+                        onClick={() => checkGame(index)}
+                        key={index}
+                        src={item.img}
+                        alt="Imagen de juego"
+                    />
+            )}
+        </div>
+    );
 }
